@@ -15,11 +15,6 @@ func readLineString(r io.Reader, bom binary.ByteOrder) (orb.LineString, error) {
 		return nil, err
 	}
 
-	if num > maxPointsAlloc {
-		// invalid data can come in here and allocate tons of memory.
-		num = maxPointsAlloc
-	}
-
 	result := make(orb.LineString, 0, num)
 	for i := 0; i < int(num); i++ {
 		p, err := readPoint(r, bom)
