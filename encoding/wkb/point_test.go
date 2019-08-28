@@ -87,7 +87,7 @@ var (
 
 func TestMultiPoint(t *testing.T) {
 	large := orb.MultiPoint{}
-	for i := 0; i < maxPointsAlloc+100; i++ {
+	for i := 0; i < 10000+100; i++ {
 		large = append(large, orb.Point{float64(i), float64(-i)})
 	}
 

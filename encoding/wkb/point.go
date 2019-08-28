@@ -42,13 +42,6 @@ func readMultiPoint(r io.Reader, bom binary.ByteOrder) (orb.MultiPoint, error) {
 		return nil, err
 	}
 
-	alloc := num
-	if alloc > maxPointsAlloc {
-		// invalid data can come in here and allocate tons of memory.
-		alloc = maxPointsAlloc
-	}
-	result := make(orb.MultiPoint, 0, alloc)
-
 	for i := 0; i < int(num); i++ {
 		byteOrder, typ, err := readByteOrderType(r)
 		if err != nil {
