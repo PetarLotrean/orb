@@ -41,6 +41,7 @@ func readMultiPoint(r io.Reader, bom binary.ByteOrder) (orb.MultiPoint, error) {
 	if err := binary.Read(r, bom, &num); err != nil {
 		return nil, err
 	}
+	result := make(orb.MultiPoint, 0, num)
 
 	for i := 0; i < int(num); i++ {
 		byteOrder, typ, err := readByteOrderType(r)
